@@ -1,0 +1,38 @@
+---
+const wsUrl = "http://localhost:8080/hello";
+const getName = async (): string => {
+  try {
+    const res = await fetch(wsUrl, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'access-control-allow-origin, access-control-allow-headers'
+      },
+    });
+    return await res.text();
+  } catch (err) {
+    console.error(err);
+    return "";
+  }
+};
+const name: string = getName();
+---
+
+<h1>Welcome to <span class="text-gradient">{name}</span>!</h1>
+
+<style>
+	h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: center;
+		margin-bottom: 1em;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+</style>
