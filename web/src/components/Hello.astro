@@ -1,24 +1,32 @@
 ---
-const wsUrl = "http://localhost:8080/hello";
-const getName = async (): Promise<string> => {
-  try {
-    const res = await fetch(wsUrl, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'access-control-allow-origin, access-control-allow-headers'
-      },
-    });
-    return await res.text();
-  } catch (err) {
-    console.error(err);
-    return "";
-  }
-};
-const name = getName();
 ---
 
-<h1>Welcome to <span class="text-gradient">{name}</span>!</h1>
+<script>
+  (async () => {
+    const wsUrl = "http://localhost:8080/hello";
+    const getName = async (): Promise<string> => {
+      try {
+        const res = await fetch(wsUrl, {
+          method: 'GET',
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers': 'access-control-allow-origin, access-control-allow-headers'
+          },
+        });
+        return await res.text();
+      } catch (err) {
+        console.error(err);
+        return "";
+      }
+    };
+
+    const el = document.getElementById("name")
+    if (el !== null)
+      el.innerHTML = await getName();
+  })();
+</script>
+
+<h1>Welcome to <span class="text-gradient" id="name"></span>!</h1>
 
 <style>
 	h1 {
