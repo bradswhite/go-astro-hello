@@ -17,5 +17,9 @@ pnpm dev
 
 
 ### To deploy
-??
-# go-astro-hello
+
+
+Astro client:
+```
+pnpm run build
+```

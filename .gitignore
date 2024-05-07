@@ -8,7 +8,7 @@ ms/.DN_Store
 ### web:
 
 # build output
-web/dist/
+#web/dist/
 
 # generated types
 web/.astro/

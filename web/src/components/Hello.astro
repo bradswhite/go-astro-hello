@@ -1,6 +1,6 @@
 ---
 const wsUrl = "http://localhost:8080/hello";
-const getName = async (): string => {
+const getName = async (): Promise<string> => {
   try {
     const res = await fetch(wsUrl, {
       method: 'GET',
@@ -15,7 +15,7 @@ const getName = async (): string => {
     return "";
   }
 };
-const name: string = getName();
+const name = getName();
 ---
 
 <h1>Welcome to <span class="text-gradient">{name}</span>!</h1>
